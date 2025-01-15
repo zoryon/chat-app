@@ -1,0 +1,18 @@
+services:
+  server:
+    image: zoryon/server-chat:1.0
+    build: 
+      context: ./serverchat
+    container_name: server-chat
+    network_mode: host
+    ports:
+      - "3000:3000"
+
+  client:
+    image: zoryon/client-chat:1.0
+    build: 
+      context: ./client-chat
+    container_name: client-chat
+    network_mode: host
+    depends_on:
+      - server
